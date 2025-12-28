@@ -1,0 +1,139 @@
+<script>
+  function add1(a, b) {
+    return a + b;
+  }
+  console.log(add1(2, 3));
+
+  const add2 = function (a, b) {
+    return a + b;
+  };
+  console.log(add2(5, 8));
+
+  const add3 = (a, b) => {
+    return a + b;
+  };
+  console.log(add3(4, 5));
+
+
+   const greet1 = (name) => {
+    return "Hello, " + name;
+  };
+  console.log(greet1("Pranav"));
+
+  const greet2 = (name) => "Hello, " + name;
+  console.log(greet2("Pranav"));
+
+  const greet3 = name => "Hello, " + name;
+  console.log(greet3("Pranav"));
+
+    function calculateBill(amount, taxPercentage) {
+    return amount + (amount * taxPercentage) / 100;
+  }
+  console.log(calculateBill(500, 18));
+
+  const calculateBillArrow = (amount, taxPercentage) =>
+    amount + (amount * taxPercentage) / 100;
+
+  console.log(calculateBillArrow(1000, 5));
+
+    const square = n => n * n;
+
+  console.log(square(4));
+
+    const formatName = (firstName, lastName) =>
+    firstName.toUpperCase() + " " + lastName.toUpperCase();
+
+  function formatNameDecl(firstName, lastName) {
+    return firstName.toUpperCase() + " " + lastName.toUpperCase();
+  }
+
+  const formatNameExpr = function (firstName, lastName) {
+    return firstName.toUpperCase() + " " + lastName.toUpperCase();
+  };
+
+  console.log(formatName("Pranav", "Anand"));
+  console.log(formatNameDecl("Pranav", "Anand"));
+  console.log(formatNameExpr("Pranav", "Anand"));
+
+  function secondLargest(arr) {
+  let max1 = -999999;
+  let max2 = -999999;
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max1) {
+      max2 = max1;
+      max1 = arr[i];
+    } else if (arr[i] > max2 && arr[i] < max1) {
+      max2 = arr[i];
+    }
+  }
+  
+  return max2;
+}
+
+console.log(secondLargest([10, 5, 8, 20]));
+
+
+function getCharFrequency(str) {
+  let count = {};
+  
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (count[char]) {
+      count[char] = count[char] + 1;
+    } else {
+      count[char] = 1;
+    }
+  }
+  return count;
+}
+
+console.log(getCharFrequency("banana"));
+
+
+
+function factorial(n) {
+  let result = 1;
+  
+  for (let i = 1; i <= n; i++) {
+    result = result * i;
+  }
+  return result;
+}
+
+console.log(factorial(5));
+
+
+
+
+function reverseString(str) {
+  let reversed = "";
+  
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversed = reversed + str[i];
+  }
+  return reversed;
+}
+
+console.log(reverseString("hello"));
+
+
+
+
+
+
+
+function isPrime(num) {
+  if (num <= 1) return false;
+  if (num === 2) return true;
+  
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(isPrime(7));
+</script>
