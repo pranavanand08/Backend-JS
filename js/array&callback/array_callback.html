@@ -1,0 +1,72 @@
+<script>
+
+
+    function Task(callback) {
+  callback();
+  console.log("Task Completed");
+}
+
+
+function checkAgeEligibility(age, callback) {
+  callback(age);
+}
+function validateAge(age) {
+  if (age >= 18) {
+    console.log("Eligible to vote");
+  } else {
+    console.log("Not eligible to vote");
+  }
+}
+
+
+
+let numbers = [10];
+numbers.push(20); 
+numbers.push(30);
+numbers.push(40); 
+console.log("After adding:", numbers);
+numbers.shift();
+console.log("After removing first:", numbers);
+
+
+
+
+let fruits = ["apple", "banana", "mango"];
+fruits.pop();
+fruits.push("orange"); 
+console.log(fruits);
+
+
+let items = [1, 2, 3, 4, 5, 6];
+items.splice(2, 2);
+console.log("After removing from middle:", items);
+
+
+
+
+let nums = [1, 2, 3, 4, 5, 6];
+let evenNums = nums.filter(function (n) {
+  return n % 2 === 0;
+});
+console.log("Even numbers:", evenNums);
+
+
+
+
+
+let prices = [100, 200, 300];
+let pricesWithGST = prices.map(function (price) {
+  return price + price * 0.18;
+});
+
+
+
+
+
+let salaries = [10000, 15000, 20000];
+let totalSalary = salaries.reduce(function (total, salary) {
+  return total + salary;
+}, 0);
+
+
+</script>
