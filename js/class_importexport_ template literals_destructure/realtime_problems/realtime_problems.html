@@ -1,0 +1,89 @@
+<script>
+
+function firstNonRepeating() {
+    let str = "aabbcdde";
+    let count = {};
+    for (let i = 0; i < str.length; i++) {
+        let letter = str[i];
+        if (count[letter]) {
+            count[letter]++;
+        } else {
+            count[letter] = 1;
+        }
+    }
+    for (let i = 0; i < str.length; i++) {
+        if (count[str[i]] === 1) {
+            return str[i];
+        }
+    }
+    return "None";
+}
+
+function moveZeros() {
+    let arr = [1,0,3,0,5,0,2];
+    let result = [];
+    let zeros = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== 0) {
+            result.push(arr[i]);
+        } else {
+            zeros++;
+        }
+    }
+    for (let i = 0; i < zeros; i++) {
+        result.push(0);
+    }
+    return result;
+}
+
+function isRotation() {
+    let s1 = "abcd";
+    let s2 = "cdab";
+    if (s1.length !== s2.length) return false;
+    return (s1 + s1).indexOf(s2) !== -1;
+}
+
+function longestSequence() {
+    let nums = [100,4,200,1,3,2];
+    if (nums.length === 0) return 0;
+    let set = new Set(nums);
+    let maxLength = 1;
+    for (let num of set) {
+        if (!set.has(num - 1)) {
+            let length = 1;
+            let next = num + 1;
+            while (set.has(next)) {
+                length++;
+                next++;
+            }
+            maxLength = Math.max(maxLength, length);
+        }
+    }
+    return maxLength;
+}
+
+function isBalanced() {
+    let str = "{[()]}";
+    let stack = [];
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        if (char === '(' || char === '{' || char === '[') {
+            stack.push(char);
+        } else if (char === ')') {
+            if (stack.pop() !== '(') return false;
+        } else if (char === '}') {
+            if (stack.pop() !== '{') return false;
+        } else if (char === ']') {
+            if (stack.pop() !== '[') return false;
+        }
+    }
+    return stack.length === 0;
+}
+
+console.log("1. First Non-Repeating → " + firstNonRepeating());
+console.log("2. Move Zeros → " + JSON.stringify(moveZeros()));
+console.log("3. String Rotation → " + isRotation());
+console.log("4. Longest Sequence → " + longestSequence());
+console.log("5. Balanced Brackets → " + isBalanced());
+
+</script>
