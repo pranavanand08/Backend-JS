@@ -1,0 +1,248 @@
+<script>
+
+    //callback
+    function showMessage() {
+  console.log("Hello from callback after 2 seconds");
+}
+setTimeout(showMessage, 2000); 
+
+
+
+
+
+function calculate(a, b, operationCallback) {
+  const result = operationCallback(a, b);
+  console.log("Result:", result);
+}
+function add(x, y) {
+  return x + y;
+}
+function multiply(x, y) {
+  return x * y;
+}
+calculate(5, 3, add);     
+calculate(5, 3, multiply); 
+
+
+
+
+ setTimeout(()=>{
+        console.log("step 1");
+    setTimeout(()=>{
+        console.log("step 2");
+    setTimeout(()=>{
+        console.log("step 3");
+    },1000) 
+    },1000)
+    },1000);
+
+
+
+
+
+
+
+ function divide(a,b,callback){
+        if(b===0){
+            console.log("It cannot be divided",null);
+        }
+        else{
+            console.log("It is divisible",a/b);
+        }
+    }
+    divide(10,2,(error,result)=>{
+        if(error){
+            console.log(error);
+        }else{
+            console.log("Result:",result);
+            
+        }
+    });
+
+
+
+
+
+
+
+
+
+//Promise
+
+
+
+
+
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Resolved after " + ms + "ms");
+    }, ms);
+  });
+}
+wait(2000).then((message) => {
+  console.log(message);
+});
+
+
+
+
+
+
+
+
+function checkNumber(num) {
+  return new Promise((resolve, reject) => {
+    if (num > 0) {
+      resolve("Number is positive");
+    } else {
+      reject("Number is not positive");
+    }
+  });
+}
+
+checkNumber(5)
+  .then((msg) => console.log("Success:", msg))
+  .catch((err) => console.log("Error:", err));
+
+checkNumber(-3)
+  .then((msg) => console.log("Success:", msg))
+  .catch((err) => console.log("Error:", err));
+
+
+
+
+
+
+
+
+  function fakeRequest(name, ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(name + " done in " + ms + "ms");
+    }, ms);
+  });
+}
+
+const p1 = fakeRequest("Task 1", 1000);
+const p2 = fakeRequest("Task 2", 1500);
+const p3 = fakeRequest("Task 3", 500);
+
+Promise.all([p1, p2, p3])
+  .then((results) => {
+    console.log("All tasks finished:");
+    console.log(results);
+  })
+  .catch((err) => {
+    console.log("At least one task failed:", err);
+  });
+
+
+
+
+
+
+
+
+
+
+  //Async-Await
+
+
+
+
+
+function getNumber() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(42), 1000);
+  });
+}
+
+async function showNumber() {
+  const num = await getNumber();
+  console.log("Number is:", num);
+}
+
+showNumber();
+
+
+
+
+
+
+
+
+
+
+
+
+function waitAndLog(text, ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(text);
+      resolve();
+    }, ms);
+  });
+}
+
+async function runSequential() {
+  await waitAndLog("First", 1000);
+  await waitAndLog("Second", 1000);
+  await waitAndLog("Third", 1000);
+  console.log("Done sequentially");
+}
+
+runSequential();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function waitAndReturn(text, ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(text + " finished");
+    }, ms);
+  });
+}
+
+async function runParallel() {
+  const p1 = waitAndReturn("Task A", 1000);
+  const p2 = waitAndReturn("Task B", 1000);
+  const p3 = waitAndReturn("Task C", 1000);
+
+  const results = await Promise.all([p1, p2, p3]);
+  console.log("Parallel results:", results);
+}
+
+runParallel();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
